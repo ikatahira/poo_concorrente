@@ -16,16 +16,24 @@ public class Processo extends Thread{
  public Processo(){
 
  }
-public Processo(String nome, int numeroInteracoes){
+public Processo(String nome, int numeroInteracoes, int prioridade){
     this.nome=nome;
     this.numeroInteracoes=numeroInteracoes;
+    setPriority(prioridade);
 }
 
 public void run(){
 
    for (int i = 0; i < numeroInteracoes; i++) {
-        System.out.println("Processo: "+nome+ ": "+i);
+        System.out.println("Processo: (" +this.nome+ "): "+i);
+    
+   
+   try {
+        Thread.sleep(i *100);
+   } catch (Exception e) {
+        e.printStackTrace();
    }
+   
 }
 }
 //método run, no corpo dele estrutrura de repeticao
